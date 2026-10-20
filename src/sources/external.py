@@ -60,6 +60,9 @@ def parse_bulletin(xlsx):
     return out.sort_values(["geo", "product", "tax", "date"]).reset_index(drop=True)
 
 def oil_bulletin(refresh=False):
+    cached = None if refresh else net.fetched_today("oil_bulletin", "history")
+    if cached:
+        return parse_bulletin(cached.read_bytes())
     # The page is only read for the link and isn't archived: its element ids are random, so
     # every copy would look new. If it's down, fall back to the last workbook we stored.
     try:

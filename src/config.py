@@ -13,6 +13,8 @@ class Settings(BaseSettings):
     gold: Path = PROJECT_ROOT / "data" / "gold"
 
     dashboard_data: Path = PROJECT_ROOT / "dashboard" / "data"
+    reports: Path = PROJECT_ROOT / "reports"
+    logs: Path = PROJECT_ROOT / "data" / "logs"
 
     # For httpx pipeline
     retry_status: set[int] = {429, 500, 502, 503, 504}
@@ -69,6 +71,7 @@ class Settings(BaseSettings):
     # Checks
     yoy_tolerance_pp: float = 0.05           # rebuilt vs official annual rate
     contribution_tolerance_pp: float = 0.02  # own vs published contributions
+    weight_sum_tolerance: float = 0.6        # per mille, published weights are rounded
     freshness_days: dict[str, int] = {"brent_usd": 10, "eurusd": 7, "oil_bulletin": 14, "gas_eu_usd": 150}
     # final HICP for a month comes out around the 17th of the next one
     hicp_release_lag_days: int = 20

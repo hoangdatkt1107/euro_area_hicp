@@ -14,7 +14,7 @@ from datetime import datetime, timedelta, UTC
 events: list[dict] = []
 client: httpx.Client | None = None
 
-def client() -> httpx.Client:
+def client_func() -> httpx.Client:
     global client
     if not client:
         client = httpx.Client(timeout=httpx.Timeout(timeout=120, connect=15),
@@ -23,37 +23,50 @@ def client() -> httpx.Client:
     return client
 
 # strategy for delay: if it return Retry-After -> follow rule otherwise use exponential back-off
-def delay(attempt:int, response: httpx.Response | None) -> float:
+def delay(attempt:int, response: httpx.Response | None = None) -> float:
     after = response.headers.get("Retry-After", "") if response is not None else ""
     return float(after) if after.isdigit() else settings.backoff_seconds * 2**attempt
 
 def get(url: str, params: dict | None = None, timeout: float = 120.0) -> httpx.Response:
     """GET with retries on transport errors and on 429 erroes or 500 above. Raises httpx.HTTPError"""
-    for attempt in range(settings.max_attempts):
-        last = attempt == settings.max_attempts - 1
+    for attempt in range(settings.max_attempts - 1):
         try:
-            r = client().get(url, params=params, timeout=timeout)
+            r = client_func().get(url, params=params, timeout=timeout)
         except httpx.TransportError as exc:
-            if last:
-                raise
-            wait = delay(attempt, None)
-            logger.info(f"{url}: {type(exc).__name__}, retry in {wait} seconds")
+            wait, why = delay(attempt), type(exc).__name__
         else:
-            if r.status_code not in settings.retry_status or last:
+            if r.status_code not in settings.retry_status:
                 r.raise_for_status()
                 return r
-            wait = delay(attempt, r)
-            logger.info(f"{url}: HTTP {r.status_code}, retry in {wait} seconds")
+            wait, why = delay(attempt, r), f"HTTP {r.status_code}"
+        logger.info(f"{url}: {why}, retry in {wait:.0f}s")
         time.sleep(wait)
-    raise AssertionError("unreachable")
+
+    # last try, whatever happens now is final
+    r = client_func().get(url, params=params, timeout=timeout)
+    r.raise_for_status()
+    return r
 
 # take the lastest existing file if there are any errors
 def latest(source: str, name: str, ext: str = "csv") -> Path | None:
-    files = sorted((settings.bronze / source / name).glob(f"*.{ext}"))
+    files = stored(settings.bronze / source / name, ext)
     return files[-1] if files else None
 
 def stored(folder: Path, ext: str) -> list[Path]:
     return [p for p in sorted(folder.glob(f"*.{ext}")) if not p.name.endswith(".meta.json")]
+
+def fetched_today(source, name):
+    """The stored file if the last fetch of source/name was today (UTC), else None."""
+    folder = settings.bronze / source / name
+    if not (folder / LOG).exists():
+        return None
+    lines = (folder / LOG).read_text().strip().splitlines()
+    if not lines:
+        return None
+    last = json.loads(lines[-1])
+    path = folder / last["stored_as"]
+    today = datetime.now(UTC).date().isoformat()
+    return path if last["fetched_at"][:10] == today and path.exists() else None
 
 # check if there any duplicated version before write to disk
 def sha(path: Path) -> str:
