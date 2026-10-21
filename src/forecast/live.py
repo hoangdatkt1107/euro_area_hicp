@@ -6,8 +6,9 @@ from src import chain as ch
 from src.config import settings
 from src.forecast import features as ft
 from src.forecast import models as md
+from src.forecast.models.common import chain_groups
 from src.forecast import realtime as rt
-from src.qa import INK, MUTED, _figure, _save, _style, _table
+from src.qa import BLUE, INK, MUTED, _figure, _save, _style, _table
 
 QUANTILES = ["q05", "q25", "q75", "q95"]
 
@@ -18,27 +19,54 @@ def _passthrough(f) -> tuple[float, float]:
     beta, *_ = np.linalg.lstsq(X, d.pump.to_numpy(), rcond=None)
     return float(beta[1]), float(beta[2])
 
-def scenarios(snap, model) -> dict:
-    """Headline YoY under each oil path. Brent moves for the rest of the coming month and stays
-    there, pump prices follow with the estimated pass-through, gas and surveys stay put."""
+def oil_basis(snap) -> dict:
+    """Where Brent (EUR) and pump prices are now, the euro rate, and how pump prices follow Brent."""
     f = ft.build(snap)
     last = f.attrs["last_hicp"]
-    brent0 = f.at[last, "brent"] * (1 + f.at[last + 1, "brent_early_chg"] / 100)
-    pump0 = f.at[last, "pump"] * (1 + f.at[last + 1, "pump_early_chg"] / 100)
-    fx = snap["eurusd"].sort_values("date").value.iloc[-1]
     now, later = _passthrough(f)
+    return {"brent": f.at[last, "brent"] * (1 + f.at[last + 1, "brent_early_chg"] / 100),
+            "pump": f.at[last, "pump"] * (1 + f.at[last + 1, "pump_early_chg"] / 100),
+            "fx": snap["eurusd"].sort_values("date").value.iloc[-1], "now": now, "later": later}
 
+
+def at_brent(snap, model, brent_usd, basis=None) -> pd.Series:
+    """Headline YoY if Brent moves to brent_usd for the rest of the coming month and stays there.
+    Pump prices follow with the estimated pass-through, gas and surveys stay put."""
+    b = basis or oil_basis(snap)
+    brent = brent_usd / b["fx"]
+    move = brent / b["brent"] - 1
+    later_months = settings.forecast_horizon - 1
+    pump = [b["pump"] * (1 + b["now"] * move)] + [b["pump"] * (1 + (b["now"] + b["later"]) * move)] * later_months
+    return md.predict(snap, models=[model], brent=brent, pump=pump)[model].yoy
+
+
+def brent_for(snap, model, target, basis=None, lo=20.0, hi=200.0) -> float | None:
+    """Brent ($) that puts the Q4 average at target, by bisection. None if it's outside lo to hi."""
+    b = basis or oil_basis(snap)
+
+    def q4(usd):
+        yoy = at_brent(snap, model, usd, b)
+        return yoy[yoy.index.quarter == 4].mean()
+
+    if not q4(lo) <= target <= q4(hi):
+        return None
+    for _ in range(14):  # a cent or so is plenty
+        mid = (lo + hi) / 2
+        lo, hi = (mid, hi) if q4(mid) < target else (lo, mid)
+    return (lo + hi) / 2
+
+
+def scenarios(snap, model) -> dict:
+    """Headline YoY under each oil path in settings.oil_scenarios."""
+    b = oil_basis(snap)
     out = {}
     for name, (kind, value) in settings.oil_scenarios.items():
-        if kind is None:
-            brent = brent0
-        else:
-            brent = value / fx if kind == "usd" else brent0 * (1 + value / 100)
-        move = brent / brent0 - 1
-        later_months = settings.forecast_horizon - 1
-        pump = [pump0 * (1 + now * move)] + [pump0 * (1 + (now + later) * move)] * later_months
-        yoy = md.predict(snap, models=[model], brent=brent, pump=pump)[model].yoy
-        out[name] = {"brent_usd": float(brent * fx), "yoy": yoy}
+        usd = b["brent"] * b["fx"]
+        if kind == "usd":
+            usd = value
+        elif kind == "pct":
+            usd *= 1 + value / 100
+        out[name] = {"brent_usd": float(usd), "yoy": at_brent(snap, model, usd, b)}
     return out
 
 
@@ -52,6 +80,23 @@ def _contributions(snap, groups) -> pd.DataFrame:
         levels.loc[t] = levels.loc[t - 1] * (1 + groups.loc[t] / 100)
     return ch.contributions(levels, weights)
 
+def _fuel_check(snap, groups) -> dict:
+    """First-month fuels from pump prices alone, the figure qa_findings.md gives, against the model,
+    and what the gap is worth on the headline."""
+    f = ft.build(snap)
+    last = f.attrs["last_hicp"]
+    d = pd.DataFrame({"fuel": f.mom_FUEL, "pump": f.pump_chg}).dropna()
+    slope, intercept = np.polyfit(d.pump[d.index >= pd.Period("2006-01", freq="M")],
+                                  d.fuel[d.index >= pd.Period("2006-01", freq="M")], 1)
+    pump = f.at[last + 1, "pump_early_chg"]
+    alone = intercept + slope * pump
+    swapped = groups.copy()
+    swapped.iloc[0, swapped.columns.get_loc("FUEL")] = alone
+    gap = chain_groups(snap, swapped).iloc[0] - chain_groups(snap, groups).iloc[0]
+    return {"pump": pump, "pump_only": alone, "model": groups.FUEL.iloc[0],
+            "brent": f.at[last + 1, "brent_early_chg"], "headline_pp": gap}
+
+
 def _figure_forecast(history, main, band, scen, contrib) -> str:
     fig, (left, right) = _figure((10.5, 4.2), ncols=2, gridspec_kw={"width_ratios": [1.6, 1]})
     # start every forecast line at the last actual month so it joins the history
@@ -62,11 +107,11 @@ def _figure_forecast(history, main, band, scen, contrib) -> str:
         return [history.iloc[-1], *values]
 
     left.plot(history.index.to_timestamp(), history, color=INK, linewidth=1.6, label="actual")
-    left.fill_between(x, joined(band.q05), joined(band.q95), color="tab:blue", alpha=0.12, linewidth=0,
+    left.fill_between(x, joined(band.q05), joined(band.q95), color=BLUE, alpha=0.12, linewidth=0,
                       label="90% band")
-    left.fill_between(x, joined(band.q25), joined(band.q75), color="tab:blue", alpha=0.25, linewidth=0,
+    left.fill_between(x, joined(band.q25), joined(band.q75), color=BLUE, alpha=0.25, linewidth=0,
                       label="50% band")
-    left.plot(x, joined(main.yoy), color="tab:blue", marker="o", linewidth=1.8, label="forecast")
+    left.plot(x, joined(main.yoy), color=BLUE, marker="o", linewidth=1.8, label="forecast")
     # the first scenario is the forecast itself
     for (name, s), style in zip(list(scen.items())[1:], [":", "--"], strict=False):
         left.plot(x, joined(s["yoy"]), color=MUTED, linestyle=style, linewidth=1.2, label=name)
@@ -104,11 +149,14 @@ def run() -> dict:
     # the chosen model's own group paths, bottom_up's if it doesn't have any
     groups = preds[model] if set(settings.groups) <= set(preds[model].columns) else preds["bottom_up"]
     contrib = _contributions(snap, groups[settings.groups]).loc[last:]
+    fuel = _fuel_check(snap, groups[settings.groups])
     scen = scenarios(snap, model)
+    q4_only = bool((main.index.quarter == 4).all())
+    ecb_brent = brent_for(snap, model, settings.ecb_q4) if q4_only else None
     history = ch.yoy(total).loc[last - 32:]
 
     path = _figure_forecast(history, main, band, scen, contrib)
-    _write_report(snap, last, model, main, split, band, contrib, scen, preds, path)
+    _write_report(snap, last, model, main, split, band, contrib, scen, preds, fuel, ecb_brent, path)
 
     result = {
         "made": f"{rt.origin_date(last):%Y-%m-%d}", "last_hicp": str(last), "data": rt.last_dates(snap),
@@ -121,11 +169,13 @@ def run() -> dict:
         "scenarios": {name: {"brent_usd": s["brent_usd"], "yoy": s["yoy"].tolist()}
                       for name, s in scen.items()},
         "models": {name: p.yoy.tolist() for name, p in preds.items()},
+        "fuel_check": fuel,
+        "ecb_brent_usd": ecb_brent,
         "history": {str(t): v for t, v in history.items()}}
     (settings.gold / "forecast.json").write_text(json.dumps(result, indent=2, default=float))
     return result
 
-def _write_report(snap, last, model, main, split, band, contrib, scen, preds, fig) -> None:
+def _write_report(snap, last, model, main, split, band, contrib, scen, preds, fuel, ecb_brent, fig) -> None:
     data = rt.last_dates(snap)
     first, end, last = main.index[0].to_timestamp(), main.index[-1].to_timestamp(), last.to_timestamp()
     table = pd.DataFrame({
@@ -156,12 +206,24 @@ def _write_report(snap, last, model, main, split, band, contrib, scen, preds, fi
            f"{split.new_months.iloc[-1]:+.2f} pp.",
            "", f"Contributions by group (pp); {last:%B} is actual, the rest forecast:", "",
            _table(groups.round(2).reset_index(names="month"), "{:.2f}"), "",
+           f"Fuels in {first:%B}: pump prices over the first two weeks are {fuel['pump']:+.1f}% on the "
+           f"{last:%B} average, which on their own point to about {fuel['pump_only']:+.1f}% for HICP fuels "
+           f"(the figure in `qa_findings.md`). {settings.label(model)} has {fuel['model']:+.2f}%: it also "
+           f"weighs Brent's {fuel['brent']:+.0f}% move in the same weeks, more of which can still reach the "
+           "pump later in the month, and the usual seasonal pattern for the month. Using the pump-only "
+           f"figure instead would move the headline by {fuel['headline_pp']:+.2f} pp.", "",
            "Oil scenarios (YoY %). Brent moves from the second half of the coming month, pump prices "
            "follow with the pass-through estimated since 2005. The first month doesn't move: the model "
            "reads it off the first two weeks of pump prices, which are already in.", "",
            _table(scen_table, "{:.2f}"), "",
            "All models (YoY %):", "", _table(models, "{:.2f}"), ""]
     if q4 is not None:
-        out += [f"Q4 average {q4:.2f}%. For reference, {settings.ecb_reference}.", ""]
+        near = min(scen.values(), key=lambda s: abs(s["brent_usd"] - settings.ecb_oil_usd))
+        q4_near = near["yoy"][near["yoy"].index.quarter == 4].mean()
+        out += [f"Q4 average {q4:.2f}%. {settings.ecb_source} have {settings.ecb_q4}% for Q4 with oil at "
+                f"about ${settings.ecb_oil_usd:.0f}. With Brent at ${near['brent_usd']:.0f}, the scenario "
+                f"closest to that, the Q4 average is {q4_near:.2f}%, so most of the gap to the ECB is the "
+                "oil price." + (f" Solving for it, the ECB's {settings.ecb_q4}% needs Brent near "
+                                f"${ecb_brent:.0f}." if ecb_brent else ""), ""]
     out += [f"![]({fig})", ""]
     (settings.reports / "forecast.md").write_text("\n".join(out) + "\n")

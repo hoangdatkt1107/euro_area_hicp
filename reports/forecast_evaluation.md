@@ -57,6 +57,18 @@ Average RMSE over the three horizons, by target year:
 | Average | 0.312 | 0.665 | 0.315 |
 | Bottom-up ridge | 0.247 | 0.615 | 0.302 |
 
+## Picked on earlier years, scored on later years
+
+The comparison and the pick above use the same origins. Here the rule only sees the earlier ones, and the pick is scored on the later origins, which played no part in it (average RMSE over the horizons):
+
+| picked on | pick | later origins | its RMSE later | rank later | best later | no change later |
+|---|---|---|---|---|---|---|
+| 2015 to 2019 | Bottom-up ridge | 78 | 0.519 | 1 of 6 | Bottom-up ridge | 0.838 |
+| 2015 to 2020 | Bottom-up ridge | 66 | 0.518 | 1 of 6 | Bottom-up ridge | 0.868 |
+| 2015 to 2022 | Bottom-up ridge | 42 | 0.328 | 3 of 6 | Bottom-up | 0.730 |
+
+Rerunning the rule every month on the last 36 months of known errors gives an average RMSE of 0.458, against 0.422 for keeping Bottom-up ridge throughout: switching after the recent winner adds noise.
+
 ## Against the first release
 
 Same scores against YoY as first published (one decimal), average over horizons: No change 0.681, Seasonal 0.604, Direct regression 0.501, Bottom-up 0.456, Average 0.471, Bottom-up ridge 0.425.

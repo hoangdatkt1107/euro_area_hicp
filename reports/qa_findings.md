@@ -1,6 +1,6 @@
 # QA findings
 
-Built by `make qa` from silver and `data/gold/validation.json`.
+Built by `python -m src qa` from silver and `data/gold/validation.json`.
 
 ## Validation
 
@@ -17,6 +17,12 @@ Largest gap 0.038 pp against a 0.05 pp limit. What's left is rounding: the offic
 | V5 | Eurostat data is current | pass |  |  |  |
 
 ![](figures/validation_gaps.png)
+
+## Revisions
+
+Headline annual rate at its final release against today's figure, both to one decimal: 321 months from 2000-01, 321 identical, largest gap 0.0 pp. The HICP isn't revised after the final release, so the backtest can be scored against today's data.
+
+Flash against final, 9 months from 2026-01: 7 the same, largest gap 0.1 pp.
 
 ## Breaks
 

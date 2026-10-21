@@ -1,4 +1,4 @@
-"""reports/data_quality.md and reports/series_coverage.csv, rebuilt on every 'make data'."""
+"""reports/data_quality.md and reports/series_coverage.csv, rebuilt on every `python -m src data`."""
 import json
 import pandas as pd
 from src import silver
@@ -24,7 +24,7 @@ def data_quality():
     cov = pd.read_parquet(settings.silver / "coverage.parquet")
     idx = pd.read_parquet(settings.silver / "index.parquet")
 
-    out = ["# Data quality", "", f"Built {manifest['built_at']} UTC by 'make data'.", ""]
+    out = ["# Data quality", "", f"Built {manifest['built_at']} UTC by `python -m src data`.", ""]
 
     out += ["## Checks", "", "| layer | check | result | detail |", "|---|---|---|---|"]
     for c in manifest["checks"]:
