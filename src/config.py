@@ -12,7 +12,6 @@ class Settings(BaseSettings):
     silver: Path = PROJECT_ROOT / "data" / "silver"
     gold: Path = PROJECT_ROOT / "data" / "gold"
 
-    dashboard_data: Path = PROJECT_ROOT / "dashboard" / "data"
     reports: Path = PROJECT_ROOT / "reports"
     logs: Path = PROJECT_ROOT / "data" / "logs"
 
@@ -86,7 +85,7 @@ class Settings(BaseSettings):
     window_months: int = 120  # rolling estimation window
     min_obs: int = 60         # a regressor with less history than this is left out
     seasonal_years: int = 5   # seasonal model: median of the same month over this many years
-    # simplest first; called M0, M1, M3, M2, M5, M4 in the plan written on 17 Oct
+    # simplest first
     models: list[str] = ["no_change", "seasonal", "direct", "bottom_up", "average", "bottom_up_ridge"]
     backtest_start: str = "2012-01"
     # model choice, written down on 17 Oct before any backtest ran: lowest RMSE averaged over the
@@ -99,7 +98,10 @@ class Settings(BaseSettings):
     # first half of the month after the last HICP
     oil_scenarios: dict[str, tuple[str | None, float | None]] = {
         "Brent flat": (None, None), "Brent back to $90": ("usd", 90.0), "Brent up 20%": ("pct", 20.0)}
-    ecb_reference: str = "ECB staff projections (September 2026): 3.6% in Q4 2026, with oil at about $88"
+    # for comparison in the forecast report
+    ecb_source: str = "ECB staff projections (September 2026)"
+    ecb_q4: float = 3.6
+    ecb_oil_usd: float = 88.0
 
     # Shocks
     lp_horizon: int = 18  # months the pass-through is traced for
@@ -109,10 +111,11 @@ class Settings(BaseSettings):
     energy_groups: list[str] = ["FUEL", "ELC_GAS"]
 
     # Display
+    author: str = "Tien Dat Hoang"
     group_order: list[str] = ["SERV", "FUEL", "FOOD_P", "ELC_GAS", "IGD_NNRG", "FOOD_NP"]
     colors: dict[str, str] = {
-        "SERV": "#2a78d6", "FUEL": "#eb6834", "FOOD_P": "#1baf7a",
-        "ELC_GAS": "#eda100", "IGD_NNRG": "#e87ba4", "FOOD_NP": "#008300",
+        "SERV": "royalblue", "FUEL": "coral", "FOOD_P": "mediumseagreen",
+        "ELC_GAS": "goldenrod", "IGD_NNRG": "palevioletred", "FOOD_NP": "green",
     }
 
     # short names for charts; Eurostat's full labels are in silver/labels.parquet

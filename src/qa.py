@@ -9,8 +9,9 @@ from src import silver
 from src.config import settings
 
 FIG = settings.reports / "figures"
-INK, MUTED, GRID = "black", "dimgray", "gainsboro"
-SERIES = ["tab:blue", "tab:orange", "tab:green", "tab:red"]
+INK, MUTED, GRID, SURFACE = "black", "dimgray", "gainsboro", "white"
+BLUE, ORANGE, RED, NEUTRAL = "royalblue", "coral", "crimson", "whitesmoke"
+SERIES = [BLUE, ORANGE, "mediumseagreen", RED]
 
 def _figure(size, **kw):
     # plain Figure, no pyplot, so no GUI backend gets involved
@@ -30,7 +31,7 @@ def _style(ax, title=None, ylabel=None):
 
 def _save(fig, name):
     FIG.mkdir(parents=True, exist_ok=True)
-    fig.savefig(FIG / name, dpi=160, bbox_inches="tight", facecolor="#fcfcfb")
+    fig.savefig(FIG / name, dpi=160, bbox_inches="tight", facecolor=SURFACE)
     return f"figures/{name}"
 
 def _table(df, floatfmt="{:.2f}"):
@@ -56,7 +57,7 @@ def validation_section():
     for gid, colour in zip(["V1", "V2", "V3"], SERIES, strict=False):
         s = gaps[gid].dropna()
         ax.plot(s.index.to_timestamp(), s.values, color=colour, linewidth=1.2, label=gid)
-    ax.axhspan(-0.05, 0.05, color="#f0efec", zorder=0)  # pass band
+    ax.axhspan(-0.05, 0.05, color=NEUTRAL, zorder=0)  # pass band
     ax.axhline(0, color=MUTED, linewidth=0.8)
     _style(ax, "Rebuilt minus official annual rate, euro area all-items", "percentage points")
     ax.legend(frameon=False, ncol=3, fontsize=9, loc="upper right")
@@ -68,6 +69,24 @@ def validation_section():
             f"Largest gap {worst:.3f} pp against a 0.05 pp limit. What's left is rounding: the official "
             "indices only have two decimals.", "",
             _table(pd.DataFrame(rows).fillna(""), "{:.3f}"), "", f"![]({path})", ""]
+
+def revisions_section():
+    # is the headline revised after its final release? decides what the backtest can be scored on
+    now = pd.read_parquet(settings.silver / "official_rates.parquet")
+    now = now[now.coicop == "TOTAL"].set_index("month").value
+    fr = pd.read_parquet(settings.silver / "first_release.parquet")
+    fr = fr[fr.coicop == "TOTAL"]
+    final = fr[fr.release == "FIN"].set_index("month").value
+    flash = fr[fr.release == "FLS"].set_index("month").value
+    gap = (final - now).dropna().round(2)
+    early = (flash - final).dropna().round(2)
+    return ["## Revisions", "",
+            "Headline annual rate at its final release against today's figure, both to one decimal: "
+            f"{len(gap)} months from {gap.index.min():%Y-%m}, {(gap == 0).sum()} identical, largest gap "
+            f"{gap.abs().max():.1f} pp. The HICP isn't revised after the final release, so the backtest can be "
+            "scored against today's data.", "",
+            f"Flash against final, {len(early)} months from {early.index.min():%Y-%m}: {(early == 0).sum()} the "
+            f"same, largest gap {early.abs().max():.1f} pp.", ""]
 
 def _robust_z(x, ref):
     med = np.median(ref)
@@ -259,8 +278,8 @@ def fuel_section():
             f"for {month}.", ""]
 
 def write():
-    parts = ["# QA findings", "", "Built by `make qa` from silver and `data/gold/validation.json`.", ""]
-    for section in (validation_section, breaks_section, seasonality_section, fuel_section):
+    parts = ["# QA findings", "", "Built by `python -m src qa` from silver and `data/gold/validation.json`.", ""]
+    for section in (validation_section, revisions_section, breaks_section, seasonality_section, fuel_section):
         parts += section()
     path = settings.reports / "qa_findings.md"
     path.write_text("\n".join(parts) + "\n")

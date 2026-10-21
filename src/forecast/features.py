@@ -1,6 +1,5 @@
-"""Monthly table the models work from, built only from a snapshot. One row per month up to T + horizon, 
-T being the last month with HICP. Row T+1 has no HICPyet, 
-just the first two weeks of oil and pump prices, which is what's known on the 20th"""
+"""Monthly table the models work from, built from a snapshot only. It runs to T + horizon, T being
+the last HICP month; row T+1 only has the first two weeks of oil and pump prices, what's known on the 20th."""
 from functools import cache
 import pandas as pd
 from dateutil.easter import easter

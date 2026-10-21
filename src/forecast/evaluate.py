@@ -5,13 +5,13 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from src.config import settings
-from src.qa import INK, MUTED, _figure, _save, _style, _table
+from src.qa import BLUE, INK, MUTED, ORANGE, _figure, _save, _style, _table
 
 PERIODS = {"2015-19": ("2015-01", "2019-12"), "2020-23": ("2020-01", "2023-12"),
            "2024-26": ("2024-01", "2026-12")}
 LEVELS = {50: (0.25, 0.75), 90: (0.05, 0.95)}
-COLORS = {"no_change": "silver", "seasonal": "darkgray", "direct": "tab:orange", "bottom_up": "tab:blue",
-          "average": "tab:green", "bottom_up_ridge": "tab:purple"}
+COLORS = {"no_change": "silver", "seasonal": "gray", "direct": ORANGE, "bottom_up": "mediumseagreen",
+          "average": "palevioletred", "bottom_up_ridge": BLUE}
 BENCHMARK = "no_change"
 
 def load() -> pd.DataFrame:
@@ -51,6 +51,36 @@ def choose(table) -> tuple[str, pd.Series]:
     near = [m for m in settings.models if avg[m] <= avg.min() * (1 + settings.selection_tolerance)]
     return near[0], avg[settings.models]
 
+# pick with the rule on origins up to each date, then score on the origins after it
+SPLITS = ["2019-12", "2020-12", "2022-12"]
+RECENT = 36  # months of known errors when the rule is rerun every month
+
+def time_split(d) -> pd.DataFrame:
+    """The same rule run on the earlier origins only, scored on the later ones it never saw."""
+    rows = []
+    for cut in SPLITS:
+        early, late = d[d.origin <= pd.Timestamp(cut)], d[d.origin > pd.Timestamp(cut)]
+        pick, _ = choose(scores(early))
+        later = scores(late).rmse.groupby("model").mean()[settings.models]
+        rows.append({"picked on": f"{d.origin.min():%Y} to {cut[:4]}", "pick": settings.label(pick),
+                     "later origins": str(late.origin.nunique()), "its RMSE later": later[pick],
+                     "rank later": f"{later.rank()[pick]:.0f} of {len(later)}",
+                     "best later": settings.label(later.idxmin()), "no change later": later[BENCHMARK]})
+    return pd.DataFrame(rows)
+
+def month_by_month(bt, d) -> pd.Series:
+    """RMSE by horizon if the rule were rerun every month on the last RECENT months of known errors."""
+    full = bt[bt.variant == "full"].dropna(subset=["actual_yoy"])
+    picked = []
+    for o in sorted(d.origin.unique()):
+        known = full[(full.target <= o) & (full.target > o - pd.DateOffset(months=RECENT))]
+        if known.empty:
+            continue
+        pick, _ = choose(scores(known))
+        picked.append(d[(d.origin == o) & (d.model == pick)])
+    p = pd.concat(picked)
+    return (p.yoy - p.actual_yoy).pow(2).groupby(p.h).mean().pow(0.5)
+ 
 def known_errors(bt, model, h, asof) -> pd.Series:
     """Outcome minus forecast for the last interval_errors forecasts whose outcome was out by
     the time of a forecast made after month 'asof'"""
@@ -127,6 +157,9 @@ def write() -> str:
         by_period[name] = scores(part).rmse.groupby("model").mean()
     by_period = pd.DataFrame(by_period).loc[settings.models].rename(index=settings.label).reset_index()
     first = scores(d, "first_yoy").rmse.groupby("model").mean().loc[settings.models]
+    split = time_split(d)
+    switching = month_by_month(bt, d)
+    fixed = table.loc[model].rmse
 
     # what each source adds: RMSE change when it's blanked out
     full_reg = table.rmse.unstack()
@@ -162,6 +195,15 @@ def write() -> str:
            f"Chosen: **{name}**.", "",
            "## By period", "", "Average RMSE over the three horizons, by target year:", "",
            _table(by_period, "{:.3f}"), "",
+           "## Picked on earlier years, scored on later years", "",
+           "The comparison and the pick above use the same origins. Here the rule only sees the earlier "
+           "ones, and the pick is scored on the later origins, which played no part in it (average RMSE "
+           "over the horizons):", "",
+           _table(split, "{:.3f}"), "",
+           f"Rerunning the rule every month on the last {RECENT} months of known errors gives an average "
+           f"RMSE of {switching.mean():.3f}, against {fixed.mean():.3f} for keeping {name} throughout"
+           + (": switching after the recent winner adds noise." if fixed.mean() < switching.mean() else "."),
+           "",
            "## Against the first release", "",
            "Same scores against YoY as first published (one decimal), average over horizons: "
            + ", ".join(f"{settings.label(m)} {v:.3f}" for m, v in first.items()) + ".", "",
@@ -180,6 +222,8 @@ def write() -> str:
     path.write_text("\n".join(out) + "\n")
 
     result = {"selected": model, "sample": [f"{d.origin.min():%Y-%m}", f"{d.origin.max():%Y-%m}"],
-              "avg_rmse": avg.round(4).to_dict(), "errors_up_to": f"{asof:%Y-%m}", "error_quantiles": live_q}
+              "avg_rmse": avg.round(4).to_dict(), "errors_up_to": f"{asof:%Y-%m}", "error_quantiles": live_q,
+              "time_split": split.to_dict("records"),
+              "month_by_month": {"rmse": switching.round(4).tolist(), "fixed": fixed.round(4).tolist()}}
     (settings.gold / "evaluation.json").write_text(json.dumps(result, indent=2))
     return str(path)

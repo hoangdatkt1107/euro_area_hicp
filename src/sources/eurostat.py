@@ -1,15 +1,13 @@
 import numpy as np
 import pandas as pd
-import hashlib
 import json
-import httpx
 from src.config import settings
 from src.sources import httpx as net
 # responses seen in this run, so the label table can be built at the end
 _responses = {}
 
 def codes_func(category: dict) -> list[str]:
-    """take catagory by building fall-back wheather it's list or dict"""
+    """Codes of a dimension in order, whether the index comes as a list or a dict"""
     idx = category["index"]
     if isinstance(idx, list):
         return idx
@@ -58,11 +56,8 @@ def all_labels():
     return pd.concat(labels(js) for js in _responses.values()).drop_duplicates(["dimension", "code"])
 
 def fetch(flow, name, filters, start=None, refresh=False):
-    """One query to one dataset, kept raw in bronze/eurostat/<flow>/<name>/.
-
-    If the filters change, the folder stays the same and the new response is simply stored as
-    the next version; the full query is in each file's .meta.json.
-    """
+    """One query to one dataset, raw in bronze/eurostat/<flow>/<name>/. Changed filters just make
+    a new version in the same folder; each file's .meta.json has the full query."""
     params = [("format", "JSON"), ("lang", "EN")]
     for dim, value in filters.items():
         params += [(dim, v) for v in ([value] if isinstance(value, str) else value)]

@@ -10,11 +10,13 @@ Change in euro area headline YoY (pp) against the baseline: the forecast to Dec 
 | Germany's fuel tax cut ends | +0.00 | +0.10 | +0.09 | +0.01 | +0.10 in Oct 27 | +0.11 |
 | Food up 5% in Germany and France | +0.32 | +0.00 | +0.27 | +0.00 | +0.32 in Feb 27 | +0.27 |
 
-- **Brent back to $90**: From $127, the average of the first half of October.
-- **Brent up 20%**: To $153.
-- **Gas up 50%**: Wholesale gas in euro; retail electricity and gas follow over a year or more.
-- **Germany's fuel tax cut ends**: Weekly Oil Bulletin: tax per litre fell 16.7 cents on 05 Oct 2026. Undoing it on a pump price of 2.24 EUR/l, from 2027-01. FUEL also holds heating oil, so this is the upper end.
-- **Food up 5% in Germany and France**: Illustrative; food and non-alcoholic beverages only.
+| preset | how it is sized |
+|---|---|
+| Brent back to $90 | From $127, the average of the first half of October. |
+| Brent up 20% | To $153. |
+| Gas up 50% | Wholesale gas in euro; retail electricity and gas follow over a year or more. |
+| Germany's fuel tax cut ends | Weekly Oil Bulletin: tax per litre fell 16.7 cents on 5 Oct 2026. Undoing it on a pump price of 2.24 EUR/l, from January 2027. FUEL also holds heating oil, so this is the upper end. |
+| Food up 5% in Germany and France | Illustrative; food and non-alcoholic beverages only. |
 
 ![](figures/shock_presets.png)
 

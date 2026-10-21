@@ -19,6 +19,8 @@ Contributions by group (pp); September is actual, the rest forecast:
 | Nov 2026 | 1.45 | 1.28 | 0.08 | 0.49 | 0.37 | 0.22 |
 | Dec 2026 | 1.47 | 1.28 | 0.11 | 0.49 | 0.42 | 0.21 |
 
+Fuels in October: pump prices over the first two weeks are -1.7% on the September average, which on their own point to about -1.7% for HICP fuels (the figure in `qa_findings.md`). Bottom-up ridge has +0.12%: it also weighs Brent's +14% move in the same weeks, more of which can still reach the pump later in the month, and the usual seasonal pattern for the month. Using the pump-only figure instead would move the headline by -0.10 pp.
+
 Oil scenarios (YoY %). Brent moves from the second half of the coming month, pump prices follow with the pass-through estimated since 2005. The first month doesn't move: the model reads it off the first two weeks of pump prices, which are already in.
 
 | scenario | Brent ($) | Oct | Nov | Dec |
@@ -38,7 +40,7 @@ All models (YoY %):
 | Average | 3.83 | 3.87 | 4.01 |
 | Bottom-up ridge | 3.85 | 3.88 | 3.98 |
 
-Q4 average 3.90%. For reference, ECB staff projections (September 2026): 3.6% in Q4 2026, with oil at about $88.
+Q4 average 3.90%. ECB staff projections (September 2026) have 3.6% for Q4 with oil at about $88. With Brent at $90, the scenario closest to that, the Q4 average is 3.67%, so most of the gap to the ECB is the oil price. Solving for it, the ECB's 3.6% needs Brent near $81.
 
 ![](figures/forecast.png)
 

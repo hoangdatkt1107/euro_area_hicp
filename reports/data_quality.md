@@ -1,6 +1,6 @@
 # Data quality
 
-Built 2026-10-20T22:05:41+00:00 UTC by 'make data'.
+Built 2026-10-21T15:12:28+00:00 UTC by `python -m src data`.
 
 ## Checks
 

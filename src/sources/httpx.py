@@ -1,6 +1,5 @@
-"""HTTP data ingestion layer with automatic retries and exponential back-off.
-Saves raw snapshots to Bronze using SHA-256 deduplication, maintains an audit trail
-in fetch_log.jsonl, and falls back to the latest local file if the API fails"""
+"""GET with retries. Raw files go to bronze with a new copy only when the content changes (sha256),
+every fetch is logged, and if the API is down we fall back to the last copy."""
 
 from pathlib import Path
 import httpx
@@ -28,7 +27,7 @@ def delay(attempt:int, response: httpx.Response | None = None) -> float:
     return float(after) if after.isdigit() else settings.backoff_seconds * 2**attempt
 
 def get(url: str, params: dict | None = None, timeout: float = 120.0) -> httpx.Response:
-    """GET with retries on transport errors and on 429 erroes or 500 above. Raises httpx.HTTPError"""
+    """GET with retries on transport errors and on 429 errors or 500 and above. Raises httpx.HTTPError"""
     for attempt in range(settings.max_attempts - 1):
         try:
             r = client_func().get(url, params=params, timeout=timeout)
@@ -47,7 +46,7 @@ def get(url: str, params: dict | None = None, timeout: float = 120.0) -> httpx.R
     r.raise_for_status()
     return r
 
-# take the lastest existing file if there are any errors
+# take the latest existing file if there are any errors
 def latest(source: str, name: str, ext: str = "csv") -> Path | None:
     files = stored(settings.bronze / source / name, ext)
     return files[-1] if files else None
