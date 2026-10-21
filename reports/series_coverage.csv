@@ -1,0 +1,507 @@
+geo,coicop,series,first_month,last_month,observations,flagged
+AT,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+AT,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+AT,CP03,Clothing and footwear,1996-01,2026-09,369,0
+AT,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+AT,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+AT,CP06,Health,1996-01,2026-09,369,0
+AT,CP07,Transport,1996-01,2026-09,369,0
+AT,CP08,Information and communication,1996-01,2026-09,369,0
+AT,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+AT,CP10,Education,1996-01,2026-09,369,0
+AT,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+AT,CP12,Insurance and financial services,1996-01,2026-09,369,0
+AT,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+AT,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+AT,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+AT,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+AT,FOOD_P,Processed food,1996-01,2026-09,369,253
+AT,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+AT,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+AT,NRG,Energy,1996-01,2026-09,369,253
+AT,SERV,Services,1999-12,2026-09,322,206
+AT,TOTAL,All items,1996-01,2026-09,369,0
+AT,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+BE,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+BE,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+BE,CP03,Clothing and footwear,1996-01,2026-09,369,0
+BE,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+BE,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+BE,CP06,Health,1996-01,2026-09,369,0
+BE,CP07,Transport,1996-01,2026-09,369,0
+BE,CP08,Information and communication,1996-01,2026-09,369,0
+BE,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+BE,CP10,Education,1999-12,2026-09,322,0
+BE,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+BE,CP12,Insurance and financial services,1996-01,2026-09,369,0
+BE,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+BE,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+BE,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+BE,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+BE,FOOD_P,Processed food,1996-01,2026-09,369,253
+BE,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+BE,IGD_NNRG,Non-energy industrial goods,1998-12,2026-09,334,218
+BE,NRG,Energy,1996-01,2026-09,369,253
+BE,SERV,Services,1998-12,2026-09,334,218
+BE,TOTAL,All items,1996-01,2026-09,369,0
+BE,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1998-12,2026-09,334,218
+BG,CP01,Food and non-alcoholic beverages,1996-12,2026-09,358,0
+BG,CP02,Alcoholic beverages and tobacco,1996-12,2026-09,358,0
+BG,CP03,Clothing and footwear,1996-12,2026-09,358,0
+BG,CP04,"Housing, water, electricity, gas",1996-12,2026-09,358,0
+BG,CP05,Furnishings and household equipment,1996-12,2026-09,358,0
+BG,CP06,Health,1996-12,2026-09,358,0
+BG,CP07,Transport,1996-12,2026-09,358,0
+BG,CP08,Information and communication,1996-12,2026-09,358,0
+BG,CP09,"Recreation, sport and culture",1996-12,2026-09,358,0
+BG,CP10,Education,1996-12,2026-09,358,0
+BG,CP11,Restaurants and accommodation,1996-12,2026-09,358,0
+BG,CP12,Insurance and financial services,1999-12,2026-09,322,0
+BG,CP13,Personal care and miscellaneous,1996-12,2026-09,358,0
+BG,ELC_GAS,"Electricity, gas and heat",1996-12,2026-09,358,242
+BG,FOOD,"Food, alcohol and tobacco",1996-12,2026-09,358,242
+BG,FOOD_NP,Unprocessed food,1996-12,2026-09,358,242
+BG,FOOD_P,Processed food,1996-12,2026-09,358,242
+BG,FUEL,Liquid and transport fuels,1996-12,2026-09,358,242
+BG,IGD_NNRG,Non-energy industrial goods,1996-12,2026-09,358,242
+BG,NRG,Energy,1996-12,2026-09,358,242
+BG,SERV,Services,1996-12,2026-09,358,242
+BG,TOTAL,All items,1996-12,2026-09,358,0
+BG,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-12,2026-09,358,242
+CY,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+CY,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+CY,CP03,Clothing and footwear,1996-01,2026-09,369,0
+CY,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+CY,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+CY,CP06,Health,1996-01,2026-09,369,0
+CY,CP07,Transport,1996-01,2026-09,369,0
+CY,CP08,Information and communication,1996-01,2026-09,369,0
+CY,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+CY,CP10,Education,1996-01,2026-09,369,0
+CY,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+CY,CP12,Insurance and financial services,1996-01,2026-09,369,0
+CY,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+CY,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+CY,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+CY,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+CY,FOOD_P,Processed food,1996-01,2026-09,369,253
+CY,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+CY,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+CY,NRG,Energy,1996-01,2026-09,369,253
+CY,SERV,Services,1996-01,2026-09,369,253
+CY,TOTAL,All items,1996-01,2026-09,369,0
+CY,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-01,2026-09,369,253
+DE,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+DE,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+DE,CP03,Clothing and footwear,1996-01,2026-09,369,3
+DE,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+DE,CP05,Furnishings and household equipment,1996-01,2026-09,369,3
+DE,CP06,Health,1996-01,2026-09,369,0
+DE,CP07,Transport,1996-01,2026-09,369,0
+DE,CP08,Information and communication,1996-01,2026-09,369,0
+DE,CP09,"Recreation, sport and culture",1996-01,2026-09,369,3
+DE,CP10,Education,1996-01,2026-09,369,0
+DE,CP11,Restaurants and accommodation,1996-01,2026-09,369,8
+DE,CP12,Insurance and financial services,1996-01,2026-09,369,0
+DE,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+DE,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+DE,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+DE,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+DE,FOOD_P,Processed food,1996-01,2026-09,369,253
+DE,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+DE,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+DE,NRG,Energy,1996-01,2026-09,369,253
+DE,SERV,Services,1996-01,2026-09,369,253
+DE,TOTAL,All items,1996-01,2026-09,369,0
+DE,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-01,2026-09,369,253
+EA,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+EA,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+EA,CP03,Clothing and footwear,1996-01,2026-09,369,3
+EA,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+EA,CP05,Furnishings and household equipment,1996-01,2026-09,369,3
+EA,CP06,Health,1996-01,2026-09,369,0
+EA,CP07,Transport,1996-01,2026-09,369,0
+EA,CP08,Information and communication,1996-01,2026-09,369,0
+EA,CP09,"Recreation, sport and culture",1996-01,2026-09,369,3
+EA,CP10,Education,1996-01,2026-09,369,0
+EA,CP11,Restaurants and accommodation,1996-01,2026-09,369,9
+EA,CP12,Insurance and financial services,1996-01,2026-09,369,0
+EA,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+EA,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+EA,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+EA,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+EA,FOOD_P,Processed food,1996-01,2026-09,369,253
+EA,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+EA,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+EA,NRG,Energy,1996-01,2026-09,369,253
+EA,SERV,Services,1999-12,2026-09,322,206
+EA,TOTAL,All items,1996-01,2026-09,369,0
+EA,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+EE,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+EE,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+EE,CP03,Clothing and footwear,1996-01,2026-09,369,0
+EE,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+EE,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+EE,CP06,Health,1996-01,2026-09,369,0
+EE,CP07,Transport,1996-01,2026-09,369,0
+EE,CP08,Information and communication,1996-01,2026-09,369,0
+EE,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+EE,CP10,Education,1996-01,2026-09,369,0
+EE,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+EE,CP12,Insurance and financial services,1997-12,2026-09,346,0
+EE,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+EE,ELC_GAS,"Electricity, gas and heat",1997-12,2026-09,346,230
+EE,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+EE,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+EE,FOOD_P,Processed food,1996-01,2026-09,369,253
+EE,FUEL,Liquid and transport fuels,1997-12,2026-09,346,230
+EE,IGD_NNRG,Non-energy industrial goods,2000-12,2026-09,310,194
+EE,NRG,Energy,1997-12,2026-09,346,230
+EE,SERV,Services,2000-12,2026-09,310,194
+EE,TOTAL,All items,1996-01,2026-09,369,0
+EE,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",2000-12,2026-09,310,194
+EL,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+EL,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+EL,CP03,Clothing and footwear,1996-01,2026-09,369,0
+EL,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+EL,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+EL,CP06,Health,1996-01,2026-09,369,0
+EL,CP07,Transport,1996-01,2026-09,369,0
+EL,CP08,Information and communication,1996-01,2026-09,369,0
+EL,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+EL,CP10,Education,1996-01,2026-09,369,0
+EL,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+EL,CP12,Insurance and financial services,1996-01,2026-09,369,0
+EL,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+EL,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+EL,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+EL,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+EL,FOOD_P,Processed food,1996-01,2026-09,369,253
+EL,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+EL,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+EL,NRG,Energy,1996-01,2026-09,369,253
+EL,SERV,Services,1996-01,2026-09,369,253
+EL,TOTAL,All items,1996-01,2026-09,369,0
+EL,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-01,2026-09,369,253
+ES,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+ES,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+ES,CP03,Clothing and footwear,1996-01,2026-09,369,0
+ES,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+ES,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+ES,CP06,Health,1996-01,2026-09,369,0
+ES,CP07,Transport,1996-01,2026-09,369,252
+ES,CP08,Information and communication,1996-01,2026-09,369,252
+ES,CP09,"Recreation, sport and culture",1996-01,2026-09,369,252
+ES,CP10,Education,1996-01,2026-09,369,0
+ES,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+ES,CP12,Insurance and financial services,1996-01,2026-09,369,252
+ES,CP13,Personal care and miscellaneous,1996-01,2026-09,369,252
+ES,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+ES,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+ES,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+ES,FOOD_P,Processed food,1996-01,2026-09,369,253
+ES,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+ES,IGD_NNRG,Non-energy industrial goods,2000-12,2026-09,310,194
+ES,NRG,Energy,1996-01,2026-09,369,253
+ES,SERV,Services,2000-12,2026-09,310,194
+ES,TOTAL,All items,1996-01,2026-09,369,0
+ES,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",2000-12,2026-09,310,194
+FI,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+FI,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+FI,CP03,Clothing and footwear,1996-01,2026-09,369,0
+FI,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+FI,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+FI,CP06,Health,1996-01,2026-09,369,0
+FI,CP07,Transport,1996-01,2026-09,369,0
+FI,CP08,Information and communication,1996-01,2026-09,369,0
+FI,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+FI,CP10,Education,1996-01,2026-09,369,0
+FI,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+FI,CP12,Insurance and financial services,1996-01,2026-09,369,0
+FI,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+FI,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+FI,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+FI,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+FI,FOOD_P,Processed food,1996-01,2026-09,369,253
+FI,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+FI,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+FI,NRG,Energy,1996-01,2026-09,369,253
+FI,SERV,Services,1999-12,2026-09,322,206
+FI,TOTAL,All items,1996-01,2026-09,369,0
+FI,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+FR,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,240
+FR,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,240
+FR,CP03,Clothing and footwear,1996-01,2026-09,369,240
+FR,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,240
+FR,CP05,Furnishings and household equipment,1996-01,2026-09,369,240
+FR,CP06,Health,1996-01,2026-09,369,240
+FR,CP07,Transport,1996-01,2026-09,369,240
+FR,CP08,Information and communication,1996-01,2026-09,369,240
+FR,CP09,"Recreation, sport and culture",1996-01,2026-09,369,240
+FR,CP10,Education,1996-01,2026-09,369,240
+FR,CP11,Restaurants and accommodation,1996-01,2026-09,369,240
+FR,CP12,Insurance and financial services,1996-01,2026-09,369,240
+FR,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+FR,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+FR,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+FR,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+FR,FOOD_P,Processed food,1996-01,2026-09,369,253
+FR,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+FR,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+FR,NRG,Energy,1996-01,2026-09,369,253
+FR,SERV,Services,1996-01,2026-09,369,253
+FR,TOTAL,All items,1996-01,2026-09,369,240
+FR,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-01,2026-09,369,253
+HR,CP01,Food and non-alcoholic beverages,1997-12,2026-09,346,0
+HR,CP02,Alcoholic beverages and tobacco,1997-12,2026-09,346,0
+HR,CP03,Clothing and footwear,1997-12,2026-09,346,0
+HR,CP04,"Housing, water, electricity, gas",1997-12,2026-09,346,0
+HR,CP05,Furnishings and household equipment,1997-12,2026-09,346,0
+HR,CP06,Health,1997-12,2026-09,346,0
+HR,CP07,Transport,1997-12,2026-09,346,0
+HR,CP08,Information and communication,1997-12,2026-09,346,0
+HR,CP09,"Recreation, sport and culture",1997-12,2026-09,346,0
+HR,CP10,Education,1997-12,2026-09,346,0
+HR,CP11,Restaurants and accommodation,1997-12,2026-09,346,0
+HR,CP12,Insurance and financial services,1997-12,2026-09,346,0
+HR,CP13,Personal care and miscellaneous,1997-12,2026-09,346,0
+HR,ELC_GAS,"Electricity, gas and heat",1998-01,2026-09,345,229
+HR,FOOD,"Food, alcohol and tobacco",1998-01,2026-09,345,229
+HR,FOOD_NP,Unprocessed food,1998-01,2026-09,345,229
+HR,FOOD_P,Processed food,1998-01,2026-09,345,229
+HR,FUEL,Liquid and transport fuels,1998-01,2026-09,345,229
+HR,IGD_NNRG,Non-energy industrial goods,1998-01,2026-09,345,229
+HR,NRG,Energy,1998-01,2026-09,345,229
+HR,SERV,Services,1998-01,2026-09,345,229
+HR,TOTAL,All items,1997-12,2026-09,346,0
+HR,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1998-01,2026-09,345,229
+IE,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+IE,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+IE,CP03,Clothing and footwear,1996-01,2026-09,369,0
+IE,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+IE,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+IE,CP06,Health,1996-01,2026-09,369,0
+IE,CP07,Transport,1996-01,2026-09,369,0
+IE,CP08,Information and communication,1996-01,2026-09,369,0
+IE,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+IE,CP10,Education,1996-01,2026-09,369,0
+IE,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+IE,CP12,Insurance and financial services,1996-01,2026-09,369,0
+IE,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+IE,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+IE,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+IE,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+IE,FOOD_P,Processed food,1996-01,2026-09,369,253
+IE,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+IE,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+IE,NRG,Energy,1996-01,2026-09,369,253
+IE,SERV,Services,1999-12,2026-09,322,206
+IE,TOTAL,All items,1996-01,2026-09,369,0
+IE,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+IT,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+IT,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+IT,CP03,Clothing and footwear,1996-01,2026-09,369,0
+IT,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+IT,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+IT,CP06,Health,1996-01,2026-09,369,0
+IT,CP07,Transport,1996-01,2026-09,369,0
+IT,CP08,Information and communication,1996-01,2026-09,369,0
+IT,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+IT,CP10,Education,1996-01,2026-09,369,0
+IT,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+IT,CP12,Insurance and financial services,1996-01,2026-09,369,0
+IT,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+IT,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+IT,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+IT,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+IT,FOOD_P,Processed food,1996-01,2026-09,369,253
+IT,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+IT,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+IT,NRG,Energy,1996-01,2026-09,369,253
+IT,SERV,Services,1999-12,2026-09,322,206
+IT,TOTAL,All items,1996-01,2026-09,369,0
+IT,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+LT,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+LT,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+LT,CP03,Clothing and footwear,1996-01,2026-09,369,0
+LT,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+LT,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+LT,CP06,Health,1996-01,2026-09,369,0
+LT,CP07,Transport,1996-01,2026-09,369,0
+LT,CP08,Information and communication,1996-01,2026-09,369,0
+LT,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+LT,CP10,Education,1996-01,2026-09,369,0
+LT,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+LT,CP12,Insurance and financial services,1996-01,2026-09,369,0
+LT,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+LT,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+LT,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+LT,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+LT,FOOD_P,Processed food,1996-01,2026-09,369,253
+LT,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+LT,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+LT,NRG,Energy,1996-01,2026-09,369,253
+LT,SERV,Services,1996-01,2026-09,369,253
+LT,TOTAL,All items,1996-01,2026-09,369,0
+LT,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-01,2026-09,369,253
+LU,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+LU,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+LU,CP03,Clothing and footwear,1996-01,2026-09,369,0
+LU,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+LU,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+LU,CP06,Health,1996-01,2026-09,369,0
+LU,CP07,Transport,1996-01,2026-09,369,0
+LU,CP08,Information and communication,1996-01,2026-09,369,0
+LU,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+LU,CP10,Education,1996-01,2026-09,369,0
+LU,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+LU,CP12,Insurance and financial services,1996-01,2026-09,369,0
+LU,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+LU,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+LU,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+LU,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+LU,FOOD_P,Processed food,1996-01,2026-09,369,253
+LU,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+LU,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+LU,NRG,Energy,1996-01,2026-09,369,253
+LU,SERV,Services,1999-12,2026-09,322,206
+LU,TOTAL,All items,1996-01,2026-09,369,0
+LU,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+LV,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+LV,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+LV,CP03,Clothing and footwear,1996-01,2026-09,369,0
+LV,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+LV,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+LV,CP06,Health,1996-01,2026-09,369,0
+LV,CP07,Transport,1996-01,2026-09,369,0
+LV,CP08,Information and communication,1996-01,2026-09,369,0
+LV,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+LV,CP10,Education,1996-01,2026-09,369,0
+LV,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+LV,CP12,Insurance and financial services,1996-01,2026-09,369,0
+LV,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+LV,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+LV,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+LV,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+LV,FOOD_P,Processed food,1996-01,2026-09,369,253
+LV,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+LV,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+LV,NRG,Energy,1996-01,2026-09,369,253
+LV,SERV,Services,1997-12,2026-09,346,230
+LV,TOTAL,All items,1996-01,2026-09,369,0
+LV,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1997-12,2026-09,346,230
+MT,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,60
+MT,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,60
+MT,CP03,Clothing and footwear,1996-01,2026-09,369,60
+MT,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,60
+MT,CP05,Furnishings and household equipment,1996-01,2026-09,369,60
+MT,CP06,Health,1996-01,2026-09,369,60
+MT,CP07,Transport,1996-01,2026-09,369,60
+MT,CP08,Information and communication,1996-01,2026-09,369,60
+MT,CP09,"Recreation, sport and culture",1996-01,2026-09,369,60
+MT,CP10,Education,1996-01,2026-09,369,60
+MT,CP11,Restaurants and accommodation,1996-01,2026-09,369,60
+MT,CP12,Insurance and financial services,1996-01,2026-09,369,60
+MT,CP13,Personal care and miscellaneous,1996-01,2026-09,369,60
+MT,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+MT,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+MT,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+MT,FOOD_P,Processed food,1996-01,2026-09,369,253
+MT,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+MT,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+MT,NRG,Energy,1996-01,2026-09,369,253
+MT,SERV,Services,1996-01,2026-09,369,253
+MT,TOTAL,All items,1996-01,2026-09,369,60
+MT,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-01,2026-09,369,253
+NL,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+NL,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+NL,CP03,Clothing and footwear,1996-01,2026-09,369,0
+NL,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+NL,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+NL,CP06,Health,1996-01,2026-09,369,0
+NL,CP07,Transport,1996-01,2026-09,369,0
+NL,CP08,Information and communication,1996-01,2026-09,369,0
+NL,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+NL,CP10,Education,1996-01,2026-09,369,0
+NL,CP11,Restaurants and accommodation,1996-01,2026-09,369,2
+NL,CP12,Insurance and financial services,1996-01,2026-09,369,0
+NL,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+NL,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+NL,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+NL,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+NL,FOOD_P,Processed food,1996-01,2026-09,369,253
+NL,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+NL,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+NL,NRG,Energy,1996-01,2026-09,369,253
+NL,SERV,Services,1999-12,2026-09,322,206
+NL,TOTAL,All items,1996-01,2026-09,369,0
+NL,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+PT,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+PT,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+PT,CP03,Clothing and footwear,1996-01,2026-09,369,0
+PT,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+PT,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+PT,CP06,Health,1996-01,2026-09,369,0
+PT,CP07,Transport,1996-01,2026-09,369,0
+PT,CP08,Information and communication,1996-01,2026-09,369,0
+PT,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+PT,CP10,Education,1996-01,2026-09,369,0
+PT,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+PT,CP12,Insurance and financial services,1996-01,2026-09,369,0
+PT,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+PT,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+PT,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+PT,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+PT,FOOD_P,Processed food,1996-01,2026-09,369,253
+PT,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+PT,IGD_NNRG,Non-energy industrial goods,1999-12,2026-09,322,206
+PT,NRG,Energy,1996-01,2026-09,369,253
+PT,SERV,Services,1999-12,2026-09,322,206
+PT,TOTAL,All items,1996-01,2026-09,369,0
+PT,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1999-12,2026-09,322,206
+SI,CP01,Food and non-alcoholic beverages,1996-01,2026-09,369,0
+SI,CP02,Alcoholic beverages and tobacco,1996-01,2026-09,369,0
+SI,CP03,Clothing and footwear,1996-01,2026-09,369,0
+SI,CP04,"Housing, water, electricity, gas",1996-01,2026-09,369,0
+SI,CP05,Furnishings and household equipment,1996-01,2026-09,369,0
+SI,CP06,Health,1996-01,2026-09,369,0
+SI,CP07,Transport,1996-01,2026-09,369,0
+SI,CP08,Information and communication,1996-01,2026-09,369,0
+SI,CP09,"Recreation, sport and culture",1996-01,2026-09,369,0
+SI,CP10,Education,1996-01,2026-09,369,0
+SI,CP11,Restaurants and accommodation,1996-01,2026-09,369,0
+SI,CP12,Insurance and financial services,1996-01,2026-09,369,0
+SI,CP13,Personal care and miscellaneous,1996-01,2026-09,369,0
+SI,ELC_GAS,"Electricity, gas and heat",1999-12,2026-09,322,206
+SI,FOOD,"Food, alcohol and tobacco",1999-12,2026-09,322,206
+SI,FOOD_NP,Unprocessed food,1999-12,2026-09,322,206
+SI,FOOD_P,Processed food,1999-12,2026-09,322,206
+SI,FUEL,Liquid and transport fuels,1999-12,2026-09,322,206
+SI,IGD_NNRG,Non-energy industrial goods,2000-12,2026-09,310,194
+SI,NRG,Energy,1999-12,2026-09,322,206
+SI,SERV,Services,2000-12,2026-09,310,194
+SI,TOTAL,All items,1996-01,2026-09,369,0
+SI,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",2000-12,2026-09,310,194
+SK,CP01,Food and non-alcoholic beverages,1996-12,2026-09,358,0
+SK,CP02,Alcoholic beverages and tobacco,1996-12,2026-09,358,0
+SK,CP03,Clothing and footwear,1996-12,2026-09,358,0
+SK,CP04,"Housing, water, electricity, gas",1996-12,2026-09,358,0
+SK,CP05,Furnishings and household equipment,1996-12,2026-09,358,0
+SK,CP06,Health,1996-12,2026-09,358,0
+SK,CP07,Transport,1996-12,2026-09,358,0
+SK,CP08,Information and communication,1996-12,2026-09,358,0
+SK,CP09,"Recreation, sport and culture",1996-12,2026-09,358,0
+SK,CP10,Education,1996-12,2026-09,358,0
+SK,CP11,Restaurants and accommodation,1996-12,2026-09,358,0
+SK,CP12,Insurance and financial services,1996-12,2026-09,358,0
+SK,CP13,Personal care and miscellaneous,1996-12,2026-09,358,0
+SK,ELC_GAS,"Electricity, gas and heat",1996-01,2026-09,369,253
+SK,FOOD,"Food, alcohol and tobacco",1996-01,2026-09,369,253
+SK,FOOD_NP,Unprocessed food,1996-01,2026-09,369,253
+SK,FOOD_P,Processed food,1996-01,2026-09,369,253
+SK,FUEL,Liquid and transport fuels,1996-01,2026-09,369,253
+SK,IGD_NNRG,Non-energy industrial goods,1996-01,2026-09,369,253
+SK,NRG,Energy,1996-01,2026-09,369,253
+SK,SERV,Services,1996-01,2026-09,369,253
+SK,TOTAL,All items,1996-12,2026-09,358,0
+SK,TOT_X_NRG_FOOD,"Core (excl. energy, food, alcohol, tobacco)",1996-01,2026-09,369,253

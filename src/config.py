@@ -76,6 +76,38 @@ class Settings(BaseSettings):
     # final HICP for a month comes out around the 17th of the next one
     hicp_release_lag_days: int = 20
 
+    # Forecast
+    # days between an observation and its release; on 20 Oct FRED had Brent to 14 Oct,
+    # and the bulletin prices Mondays and is out by Thursday
+    release_lag_days: dict[str, int] = {"brent_usd": 6, "eurusd": 1, "oil_bulletin": 3}
+    gas_lag_months: int = 2  # IMF gas, July was the latest one in mid October
+    forecast_horizon: int = 3
+    early_day: int = 14  # first two weeks of a month, always out by the 20th
+    window_months: int = 120  # rolling estimation window
+    min_obs: int = 60         # a regressor with less history than this is left out
+    seasonal_years: int = 5   # seasonal model: median of the same month over this many years
+    # simplest first; called M0, M1, M3, M2, M5, M4 in the plan written on 17 Oct
+    models: list[str] = ["no_change", "seasonal", "direct", "bottom_up", "average", "bottom_up_ridge"]
+    backtest_start: str = "2012-01"
+    # model choice, written down on 17 Oct before any backtest ran: lowest RMSE averaged over the
+    # horizons from eval_start on; a simpler model within 2% of the best one wins
+    eval_start: str = "2015-01"
+    selection_tolerance: float = 0.02
+    interval_errors: int = 120  # past errors the forecast intervals are built from
+    interval_min_errors: int = 24
+    # oil paths for the live forecast, (kind, value); no kind means Brent stays where it was in the
+    # first half of the month after the last HICP
+    oil_scenarios: dict[str, tuple[str | None, float | None]] = {
+        "Brent flat": (None, None), "Brent back to $90": ("usd", 90.0), "Brent up 20%": ("pct", 20.0)}
+    ecb_reference: str = "ECB staff projections (September 2026): 3.6% in Q4 2026, with oil at about $88"
+
+    # Shocks
+    lp_horizon: int = 18  # months the pass-through is traced for
+    lp_lags: int = 3
+    lp_exclude: tuple[str, str] = ("2020-01", "2023-12")  # robustness run without the pandemic and the surge
+    shock_months: int = 24
+    energy_groups: list[str] = ["FUEL", "ELC_GAS"]
+
     # Display
     group_order: list[str] = ["SERV", "FUEL", "FOOD_P", "ELC_GAS", "IGD_NNRG", "FOOD_NP"]
     colors: dict[str, str] = {
@@ -85,6 +117,8 @@ class Settings(BaseSettings):
 
     # short names for charts; Eurostat's full labels are in silver/labels.parquet
     labels: dict[str, str] = {
+        "no_change": "No change", "seasonal": "Seasonal", "direct": "Direct regression",
+        "bottom_up": "Bottom-up", "average": "Average", "bottom_up_ridge": "Bottom-up ridge",
         "TOTAL": "All items",
         "TOT_X_NRG_FOOD": "Core (excl. energy, food, alcohol, tobacco)",
         "NRG": "Energy",
