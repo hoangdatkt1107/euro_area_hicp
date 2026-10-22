@@ -85,6 +85,11 @@ def render():
     cols[1].metric(f"Average over {year}", f"{impact.loc[str(year)].mean():+.2f} pp")
     cols[2].metric(f"Of which second round, {year}", f"{r['indirect'].loc[str(year)].mean():+.2f} pp")
 
+    st.markdown("#### Headline with and without the shock")
+    st.plotly_chart(charts.with_and_without(base.months, r["baseline"], r["yoy"]), theme=None)
+    st.caption("Baseline: the forecast for the first months, then every country's prices on their usual "
+               "seasonal path.")
+
     st.markdown("#### Effect on the headline, month by month")
     st.plotly_chart(charts.impact(base.months, r["direct"], r["indirect"], impact), theme=None)
     st.caption("A one-off rise in the price level lifts the annual rate for twelve months, then drops out. "
@@ -102,11 +107,6 @@ def render():
     with right:
         st.markdown(f"#### By price group, {year} average")
         st.plotly_chart(charts.bars(r["by_component"].loc[str(year)].mean()), theme=None)
-
-    with st.expander("Headline with and without the shock"):
-        st.plotly_chart(charts.with_and_without(base.months, r["baseline"], r["yoy"]), theme=None)
-        st.caption("Baseline: the forecast for the first months, then every country's prices on their usual "
-                   "seasonal path.")
 
     out = pd.DataFrame({"month": base.months.astype(str), "baseline_yoy": r["baseline"].to_numpy(),
                         "shocked_yoy": r["yoy"].to_numpy(), "impact_pp": impact.to_numpy(),

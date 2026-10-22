@@ -105,6 +105,7 @@ def write() -> dict:
                 for g in [*TARGETS[name], "TOTAL"]]
         parts += [f"### {name}", "", _table(pd.DataFrame(rows), "{:.3f}"), ""]
     brent12 = est["brent"]["TOTAL"].elasticity[12]
+    brent12_ex = est["brent"]["TOTAL"].elasticity_ex[12]
     food = est["energy"]["FOOD_P"]
     out = ["# Pass-through", "",
            "Local projections, monthly, euro area. % change in each group's level h months after a 1% "
@@ -112,8 +113,9 @@ def write() -> dict:
            f"The last column re-estimates without {settings.lp_exclude[0][:4]} to "
            f"{settings.lp_exclude[1][:4]}.", "",
            *parts,
-           f"A 10% rise in Brent that holds lifts the headline by about {10 * brent12:.2f}% after a "
-           "year, mostly through fuels and then electricity and gas.", "",
+           f"A 10% rise in Brent that holds lifts the all-items price level by about {10 * brent12:.2f}% after "
+           f"a year ({10 * brent12_ex:.2f}% without 2020-23), mostly through fuels and then electricity and "
+           "gas.", "",
            "The second round from energy into food, goods and services depends on 2021-23: processed "
            f"food moves {food.elasticity[12]:.2f}% per 1% on energy after a year with it, "
            f"{food.elasticity_ex[12]:.2f}% without. In 2022 energy and food also rose together partly for "
