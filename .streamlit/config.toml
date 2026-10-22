@@ -1,0 +1,13 @@
+[theme]
+base = "light"
+primaryColor = "royalblue"
+backgroundColor = "white"
+secondaryBackgroundColor = "whitesmoke"
+textColor = "black"
+font = "sans serif"
+
+[client]
+toolbarMode = "minimal"  # no Deploy button
+
+[browser]
+gatherUsageStats = false
