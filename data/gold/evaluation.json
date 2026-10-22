@@ -1,0 +1,77 @@
+{
+  "selected": "bottom_up_ridge",
+  "sample": [
+    "2015-01",
+    "2026-06"
+  ],
+  "avg_rmse": {
+    "no_change": 0.6758,
+    "seasonal": 0.6004,
+    "direct": 0.4961,
+    "bottom_up": 0.4517,
+    "average": 0.4667,
+    "bottom_up_ridge": 0.4222
+  },
+  "errors_up_to": "2026-09",
+  "error_quantiles": {
+    "1": {
+      "q25": -0.12574366113334845,
+      "q75": 0.12871437367122374,
+      "q05": -0.3755220156495742,
+      "q95": 0.3368719008540643
+    },
+    "2": {
+      "q25": -0.22108619462806178,
+      "q75": 0.2469806663616132,
+      "q05": -0.5153168029559463,
+      "q95": 0.6967118693660722
+    },
+    "3": {
+      "q25": -0.2635579889878392,
+      "q75": 0.3045126983555857,
+      "q05": -0.7039584186711911,
+      "q95": 0.883588637996213
+    }
+  },
+  "time_split": [
+    {
+      "picked on": "2015 to 2019",
+      "pick": "Bottom-up ridge",
+      "later origins": "78",
+      "its RMSE later": 0.5186273620020322,
+      "rank later": "1 of 6",
+      "best later": "Bottom-up ridge",
+      "no change later": 0.8383493869124156
+    },
+    {
+      "picked on": "2015 to 2020",
+      "pick": "Bottom-up ridge",
+      "later origins": "66",
+      "its RMSE later": 0.5181421591311461,
+      "rank later": "1 of 6",
+      "best later": "Bottom-up ridge",
+      "no change later": 0.8679628156548
+    },
+    {
+      "picked on": "2015 to 2022",
+      "pick": "Bottom-up ridge",
+      "later origins": "42",
+      "its RMSE later": 0.32770009415076684,
+      "rank later": "3 of 6",
+      "best later": "Bottom-up",
+      "no change later": 0.7301508730577296
+    }
+  ],
+  "month_by_month": {
+    "rmse": [
+      0.2721,
+      0.467,
+      0.6359
+    ],
+    "fixed": [
+      0.2516,
+      0.4276,
+      0.5873
+    ]
+  }
+}
