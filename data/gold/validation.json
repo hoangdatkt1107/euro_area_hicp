@@ -1,0 +1,123 @@
+{
+  "gates": [
+    {
+      "id": "V1",
+      "name": "euro area rebuilt from the 6 main groups",
+      "ok": true,
+      "threshold_pp": 0.05,
+      "months": 298,
+      "from": "2001-12",
+      "max_abs_pp": 0.03035643962729928,
+      "mean_abs_pp": 0.006439972196791331,
+      "worst_month": "2003-09",
+      "max_abs_since_2017_pp": 0.014467627619318968,
+      "published_1dp_match": 0.9295302013422819,
+      "max_abs_vs_published_pp": 0.06416000465415839
+    },
+    {
+      "id": "V2",
+      "name": "euro area rebuilt from the 13 COICOP divisions",
+      "ok": true,
+      "threshold_pp": 0.05,
+      "months": 346,
+      "from": "1997-12",
+      "max_abs_pp": 0.019464623847409435,
+      "mean_abs_pp": 0.005263700094354499,
+      "worst_month": "2001-12",
+      "max_abs_since_2017_pp": 0.014680959828106133,
+      "published_1dp_match": 0.940809968847352,
+      "max_abs_vs_published_pp": 0.061067989344212315
+    },
+    {
+      "id": "V3",
+      "name": "euro area rebuilt from the 21 national indices",
+      "ok": true,
+      "threshold_pp": 0.05,
+      "months": 346,
+      "from": "1997-12",
+      "max_abs_pp": 0.0377970688547169,
+      "mean_abs_pp": 0.009312082014410299,
+      "worst_month": "2001-12",
+      "max_abs_since_2017_pp": 0.026073411985994,
+      "published_1dp_match": 0.8940809968847352,
+      "max_abs_vs_published_pp": 0.08112411063604541
+    },
+    {
+      "id": "V3b",
+      "name": "euro area rebuilt two levels deep (groups within countries)",
+      "ok": true,
+      "threshold_pp": 0.05,
+      "months": 298,
+      "from": "2001-12",
+      "max_abs_pp": 0.03213378329485206,
+      "mean_abs_pp": 0.007268612489732558,
+      "worst_month": "2002-11",
+      "max_abs_since_2017_pp": 0.019128151524892445,
+      "published_1dp_match": 0.9194630872483222,
+      "max_abs_vs_published_pp": 0.07120337707060731
+    },
+    {
+      "id": "V3c",
+      "name": "euro area rebuilt two levels deep (divisions within countries)",
+      "ok": true,
+      "threshold_pp": 0.05,
+      "months": 346,
+      "from": "1997-12",
+      "max_abs_pp": 0.025812776056333142,
+      "mean_abs_pp": 0.005883749082828056,
+      "worst_month": "2001-10",
+      "max_abs_since_2017_pp": 0.014790592440472317,
+      "published_1dp_match": 0.9314641744548287,
+      "max_abs_vs_published_pp": 0.0633632471195984
+    },
+    {
+      "id": "V4",
+      "name": "contributions match Eurostat's published contributions",
+      "ok": true,
+      "threshold_pp": 0.02,
+      "months": 297,
+      "from": "2002-01",
+      "max_abs_pp": 0.009352139728044051,
+      "mean_abs_pp": 0.0026527419857591905,
+      "worst": "SERV 2009-06"
+    },
+    {
+      "id": "V5",
+      "name": "Eurostat data is current",
+      "ok": true,
+      "detail": "at least 2026-09, latest 2026-09"
+    }
+  ],
+  "freshness": [
+    {
+      "source": "Eurostat HICP",
+      "latest": "2026-09",
+      "ok": true,
+      "rule": "at least 2026-09"
+    },
+    {
+      "source": "brent_usd",
+      "latest": "2026-10-14",
+      "ok": true,
+      "rule": "within 10 days"
+    },
+    {
+      "source": "eurusd",
+      "latest": "2026-10-20",
+      "ok": true,
+      "rule": "within 7 days"
+    },
+    {
+      "source": "oil_bulletin",
+      "latest": "2026-10-12",
+      "ok": true,
+      "rule": "within 14 days"
+    },
+    {
+      "source": "gas_eu_usd",
+      "latest": "2026-07-01",
+      "ok": true,
+      "rule": "within 150 days"
+    }
+  ]
+}

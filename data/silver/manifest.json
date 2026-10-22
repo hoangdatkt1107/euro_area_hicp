@@ -1,0 +1,122 @@
+{
+  "built_at": "2026-10-21T15:12:28+00:00",
+  "vintage": {
+    "prc_hicp_minr": "2026-10-16 21:00:00+00:00",
+    "prc_hicp_iw": "2026-10-16 21:00:00+00:00",
+    "prc_hicp_cw": "2026-07-17 09:00:00+00:00",
+    "prc_hicp_ctr": "2026-10-16 09:00:00+00:00",
+    "prc_hicp_fpd": "2026-10-16 21:00:00+00:00",
+    "business_surveys": "2026-09-29 09:00:00+00:00"
+  },
+  "external": {
+    "brent_usd": "2026-10-14",
+    "eurusd": "2026-10-20",
+    "gas_eu_usd": "2026-07-01",
+    "oil_bulletin": "2026-10-12"
+  },
+  "fallbacks": [],
+  "checks": [
+    {
+      "check": "index: no duplicate keys",
+      "ok": true,
+      "detail": "0 duplicates",
+      "layer": "eurostat"
+    },
+    {
+      "check": "index: no missing months inside a series",
+      "ok": true,
+      "detail": "0 series with gaps",
+      "layer": "eurostat"
+    },
+    {
+      "check": "index: all values positive",
+      "ok": true,
+      "detail": "0 non-positive values",
+      "layer": "eurostat"
+    },
+    {
+      "check": "index: every requested series returned data",
+      "ok": true,
+      "detail": "506 of 506 present",
+      "layer": "eurostat"
+    },
+    {
+      "check": "index: every series reaches the latest month",
+      "ok": true,
+      "detail": "latest month 2026-09",
+      "layer": "eurostat"
+    },
+    {
+      "check": "weights: groups sum to 1000 in every complete year",
+      "ok": true,
+      "detail": "max deviation 0.08 over 627 geo-years; accepted exceptions: EL 1996",
+      "layer": "eurostat"
+    },
+    {
+      "check": "weights: divisions sum to 1000 in every complete year",
+      "ok": true,
+      "detail": "max deviation 0.03 over 679 geo-years",
+      "layer": "eurostat"
+    },
+    {
+      "check": "country weights: sum to 1000 every year",
+      "ok": true,
+      "detail": "max deviation 0.03 over 31 years",
+      "layer": "eurostat"
+    },
+    {
+      "check": "country weights: members match the euro area of each year",
+      "ok": true,
+      "detail": "membership correct for every year since 1999",
+      "layer": "eurostat"
+    },
+    {
+      "check": "codes: every configured code exists in Eurostat's code lists",
+      "ok": true,
+      "detail": "45 codes checked",
+      "layer": "eurostat"
+    },
+    {
+      "check": "contributions: available for the latest month",
+      "ok": true,
+      "detail": "latest 2026-09",
+      "layer": "eurostat"
+    },
+    {
+      "check": "first releases: final release up to the latest month",
+      "ok": true,
+      "detail": "357 months, 1997-01 to 2026-09",
+      "layer": "eurostat"
+    },
+    {
+      "check": "surveys: all three series reach the latest HICP month",
+      "ok": true,
+      "detail": "industry_price_expectations 2026-09, retail_price_expectations 2026-09, services_price_expectations 2026-09",
+      "layer": "eurostat"
+    },
+    {
+      "check": "external: brent_usd available",
+      "ok": true,
+      "detail": "9,108 obs to 2026-10-14",
+      "layer": "external"
+    },
+    {
+      "check": "external: eurusd available",
+      "ok": true,
+      "detail": "7,118 obs to 2026-10-20",
+      "layer": "external"
+    },
+    {
+      "check": "external: gas_eu_usd available",
+      "ok": true,
+      "detail": "415 obs to 2026-07-01",
+      "layer": "external"
+    },
+    {
+      "check": "external: oil bulletin has euro area, DE and ES, with and without tax",
+      "ok": true,
+      "detail": "30 geos, weeks to 2026-10-12",
+      "layer": "external"
+    }
+  ]
+}
