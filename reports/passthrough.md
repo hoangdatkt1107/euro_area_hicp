@@ -31,7 +31,7 @@ Local projections, monthly, euro area. % change in each group's level h months a
 | Services | -0.007 | -0.007 | 0.011 | 0.038 | 0.065 | 0.009 |
 | All items | 0.107 | 0.113 | 0.138 | 0.180 | 0.231 | 0.112 |
 
-A 10% rise in Brent that holds lifts the headline by about 0.42% after a year, mostly through fuels and then electricity and gas.
+A 10% rise in Brent that holds lifts the all-items price level by about 0.42% after a year (0.29% without 2020-23), mostly through fuels and then electricity and gas.
 
 The second round from energy into food, goods and services depends on 2021-23: processed food moves 0.17% per 1% on energy after a year with it, 0.06% without. In 2022 energy and food also rose together partly for shared reasons (the war, fertiliser prices), so the full-sample number is an upper end.
 
